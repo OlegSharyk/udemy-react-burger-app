@@ -22,7 +22,7 @@
     color: #40a4c8;
 }
 
-@mdeia (min-width: 500px) {
+@media (min-width: 500px) {
     .NavigationItem {
         margin: 0;
         display: flex;

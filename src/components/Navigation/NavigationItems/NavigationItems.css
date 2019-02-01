@@ -7,7 +7,7 @@
     height: 100%;
 }
 
-@mdeia (min-width: 500px) {
+@media (min-width: 500px) {
     .NavigationItems {
         display: flex;
     }
