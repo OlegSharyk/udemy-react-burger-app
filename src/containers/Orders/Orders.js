@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import axios from '../../axios-orders'
-import withErrorHandler from '../../HOC/withErrorHandler/withErrorHandler'
+import React, { Component } from 'react';
 
-import Order from '../../components/Order/Order'
+import Order from '../../components/Order/Order';
+import axios from '../../axios-orders';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 class Orders extends Component {
     state = {
@@ -10,39 +10,35 @@ class Orders extends Component {
         loading: true
     }
 
-    componentDidMount(){
+    componentDidMount() {
         axios.get('/orders.json')
-            .then(response => {
-                // console.log(response.data)
-                const fetchedOrders = []
-                for (let key in response.data) {
+            .then(res => {
+                const fetchedOrders = [];
+                for (let key in res.data) {
                     fetchedOrders.push({
-                        ...response.data[key],
+                        ...res.data[key],
                         id: key
-                    })
+                    });
                 }
-                this.setState({orders: fetchedOrders, loading: false,})
+                this.setState({loading: false, orders: fetchedOrders});
             })
             .catch(err => {
-                this.setState({loading: false})
-            })
+                this.setState({loading: false});
+            });
     }
 
-    render() {
-        // console.log(this.state)
-
-        return(
+    render () {
+        return (
             <div>
                 {this.state.orders.map(order => (
                     <Order 
                         key={order.id}
-                        ingridients={order.ingridients}
-                        price={order.price} 
-                    />
+                        ingredients={order.ingredients}
+                        price={order.price} />
                 ))}
             </div>
-        )
+        );
     }
 }
 
-export default withErrorHandler(Orders, axios)
+export default withErrorHandler(Orders, axios);
