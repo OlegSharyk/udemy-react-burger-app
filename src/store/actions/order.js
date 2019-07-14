@@ -28,13 +28,9 @@ export const purchaseBurger = (orderData, token) => {
         axios
             .post('/orders.json?auth=' + token, orderData)
             .then(response => {
-                // this.setState({ loading: false });
-                // this.props.history.push('/');
-                console.log(response.data);
                 dispatch(purchaseBurgerSuccess(response.data.name, orderData));
             })
             .catch(error => {
-                // this.setState({ loading: false });
                 dispatch(purchaseBurgerFail(error));
             });
     };
@@ -81,11 +77,9 @@ export const fetchOrders = (token, userId) => {
                         id: key,
                     });
                 }
-                // this.setState({ loading: false, orders: fetchedOrders });
                 dispatch(fetchOrdersSuccess(fetchedOrders));
             })
             .catch(err => {
-                // this.setState({ loading: false });
                 dispatch(fetchOrdersFail(err));
             });
     };

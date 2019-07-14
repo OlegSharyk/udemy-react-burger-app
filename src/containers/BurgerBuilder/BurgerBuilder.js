@@ -12,16 +12,11 @@ import * as burgerBuilderActions from '../../store/actions';
 import axios from '../../axios-orders';
 
 class BurgerBuilder extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {...}
-    // }
     state = {
         purchasing: false,
     };
 
     componentDidMount() {
-        // console.log(this.props);
         this.props.onInitIngredients();
     }
 
@@ -91,10 +86,6 @@ class BurgerBuilder extends Component {
                 />
             );
         }
-        // if (this.state.loading) {
-        //     orderSummary = <Spinner />;
-        // }
-        // {salad: true, meat: false, ...}
         return (
             <Aux>
                 <Modal
